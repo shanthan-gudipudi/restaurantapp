@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- aos css cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static '/mainpage/style/style.css' %}">
+    <link rel="icon" href="{% static '/mainpage/logo.jpg' %}" type="image/x-icon">
+    <title>Gsk's restaurants</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+    $('#menu-bar').click(function(){
+        $(this).toggleClass('fa-times');
+        $('.navbar').toggleClass('nav-toggle');
+    });
+    $(window).on('load scroll',function(){
+
+        $('#menu-bar').removeClass('fa-times');
+        $('.navbar').removeClass('nav-toggle');
+
+        $('section').each(function(){
+
+            let top = $(window).scrollTop();
+            let height = $(this).height();
+            let id = $(this).attr('id');
+            let offset = $(this).offset().top - 200;
+
+            if(top > offset && top < offset + height){
+                $('.navbar ul li a').removeClass('active');
+                $('.navbar').find(`[href="#${id}"]`).addClass('active');
+            }
+
+        });
+
+    });
+    $('.menu .list .btn').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        let src = $(this).attr('data-src');
+        $('#menu-img').attr('src',src);
+        let src2 = $(this).attr('data-src1');
+        $('#menu-img1').attr('src',src2);
+        let src3 = $(this).attr('data-src2');
+        $('#menu-img2').attr('src',src3);
+    });
+    $('.buy').click(function(){
+        $('.bottom').addClass("clicked");
+    });
+
+    $('.remove').click(function(){
+         $('.bottom').removeClass("clicked");
+    });
+});
+    </script>
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header>
+
+    <a href="#" class="logo"><img src="{% static '/mainpage/logo.jpg' %}" alt=""></a>
+
+    <div id="menu-bar" class="fas fa-hamburger"></div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a class="active" href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#menu">menu</a></li>
+            <li><a href="#reservation">reservation</a></li>
+            <li><a href="#booking">Buffet booking</a></li>
+            <li><a href="#order">take away order</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- header section ends  -->
+
+<!-- home secion starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>We belive good food offer great smile</h3>
+        <p>Culture and tradition have to change little by little. So 'new' means a little twist, a marriage of Japanese technique with French ingredients. My technique. Indian food, Korean food; I put Italian mozzarella cheese with sashimi. I don't think 'new new new.' I'm not a genius. A little twist.</p>
+        <a href="#reservation"><button class="btn">get started</button></a>
+    </div>
+
+    <div class="image">
+        <img src="{% static '/mainpage/quotation.jpg' %}" alt="">
+    </div>
+
+</section>
+
+<!-- home secion starts  -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+    <div class="image1"></div>
+    <div class="image2"></div>
+    <div class="content">
+        <h3>a word about us</h3>
+        <p>Our Story
+         Gsk was founded in 1975 by one of our Promoters. We currently own and operate 138 outlets in India, 5 outlets in UAE, 1 outlet in Malaysia and 1 outlet in Oman. One of the leading casual dining chains in India, Gsk pioneered the concept of “over the place you need” live grills embedded in dining tables – allowing guests to grill their own food right at their tables.
+
+Indian cuisine is a natural part of the diet in the markets in which the Gsk Restaurants operate. We continue to offer new menu options, both vegetarian and non-vegetarian, largely based on Indian cuisine and use seasonal customer preferences to introduce new dishes. We also run popular food festivals at over gsk Restaurants, thereby offering our customers a range of Indian and international cuisines.
+
+Our fixed price ‘all you can eat’ concept at our Restaurants offers our customers a varying spread of consistently delicious food at a value-oriented price in a pleasant and casual dining environment. We believe that our cuisine is distinctively attractive as compared with other dining options due to its DIY and cooked-at-the-table nature and the flexibility and fun of mixing and matching a wide variety of meats, vegetables, sauces and condiments to create dishes according to each diner’s individual tastes and preferences. In addition, fixed price dining is very popular amongst relatively larger groups, due to customers’ perception of value for money and the comfort of certainty over the bill amount irrespective of varying individual appetites and consumption
+
+Our Gsk Restaurants typically offer customers at least five vegetarian and five non-vegetarian largely pre-cooked appetisers they can season and food on a grill embedded in their table, an all-you-can-eat main course buffet and a selection of desserts.
+
+Our core values prioritise being customer-focused to provide excellent products and service and employee-focused by maintaining a superior quality work environment. Our Company was ranked 13th among best companies to work for in India across all categories by Economic Times “Great Places to Work” survey for 2019 conducted by Great Places to Work Institute. Our Company was also voted among the top ten employers within the Indian retail industry for 2019 by Great Places to Work and 14th among best large workplaces in Asia by Great Places to Work Institute.</p>
+
+        <a href="https://www.instagram.com/gsk_since1975/" target="_blank"><button class="btn">learn more</button></a>
+    </div>
+    <div class="image3"></div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- menu secion starts  -->
+
+<section class="menu" id="menu">
+
+<h1 class="heading"> our delicious <span>menu</span> </h1>
+
+<ul class="list">
+    <li class="btn active" data-src="{% static '/mainpage/menuimages/breakfast1.jpg' %}" data-src1="{% static '/mainpage/menuimages/breakfast2.jpg' %}" data-src2="{% static '/mainpage/menuimages/breakfast3.jpg' %}">breakfast</li>
+    <li class="btn" data-src="{% static '/mainpage/menuimages/lunch1.jpg' %}" data-src1="{% static '/mainpage/menuimages/lunch2.jpg' %}" data-src2="{% static '/mainpage/menuimages/lunch3.jpg' %}">lunch</li>
+    <li class="btn" data-src="{% static '/mainpage/menuimages/dinner1.jpg' %}" data-src1="{% static '/mainpage/menuimages/dinner2.jpg' %}" data-src2="{% static '/mainpage/menuimages/dinner3.jpg' %}">dinner</li>
+    <li class="btn" data-src="{% static '/mainpage/menuimages/desserts1.jpg' %}" data-src1="{% static '/mainpage/menuimages/desserts2.jpg' %}" data-src2="{% static '/mainpage/menuimages/desserts3.jpg' %}" >dessert</li>
+    <li class="btn" data-src="{% static '/mainpage/menuimages/starters1.jpg' %}" data-src1="{% static '/mainpage/menuimages/starters2.jpg' %}" data-src2="{% static '/mainpage/menuimages/starters3.jpg' %}">starters</li>
+</ul>
+
+<div class="row">
+
+    <div class="image">
+        <img id="menu-img" src="{% static '/mainpage/menuimages/breakfast1.jpg' %}" alt="">
+        <img id="menu-img1" src="{% static '/mainpage/menuimages/breakfast2.jpg' %}" alt="">
+        <img id="menu-img2" src="{% static '/mainpage/menuimages/breakfast3.jpg' %}" alt="">
+    </div>
+
+    <div class="content">
+        <div class="info">
+            <!-- <h3>we serve best food in the country </h3> -->
+            <h3>Today's Menu</h3>
+            {% for menu1 in menu %}
+               {% if menu1.itemof == "breakfast"%}
+                      <h3> . <span class="space">{{menu1.itemof}}</span> <span class="space">{{menu1.item}}</span> <span class="space"><b>₹</b>{{menu1.price}}</span></h3>
+               {% endif%}
+            {% endfor %}
+            {% for menu1 in menu %}
+               {% if menu1.itemof == "lunch"%}
+                      <h3> . <span class="space">{{menu1.itemof}}</span> <span class="space">{{menu1.item}}</span> <span class="space"><b>₹</b>{{menu1.price}}</span></h3>
+               {% endif%}
+            {% endfor %}
+            {% for menu1 in menu %}
+               {% if menu1.itemof == "dinner"%}
+                      <h3> . <span class="space">{{menu1.itemof}}</span> <span class="space">{{menu1.item}}</span> <span class="space"><b>₹</b>{{menu1.price}}</span></h3>
+               {% endif%}
+            {% endfor %}
+            {% for menu1 in menu %}
+               {% if menu1.itemof == "dessert"%}
+                      <h3> . <span class="space">{{menu1.itemof}}</span> <span class="space">{{menu1.item}}</span> <span class="space"><b>₹</b>{{menu1.price}}</span></h3>
+               {% endif%}
+            {% endfor %}
+            {% for menu1 in menu %}
+               {% if menu1.itemof == "starters"%}
+                      <h3> . <span class="space">{{menu1.itemof}}</span> <span class="space">{{menu1.item}}</span> <span class="space"><b>₹</b>{{menu1.price}}</span></h3>
+               {% endif%}
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<!-- menu secion ends  -->
+
+<!--  reservation section starts -->
+
+<section class="reservation" id="reservation">
+    <form action="regis" method="post">
+        {% csrf_token %}
+     <div class="container">
+          <h1>Reservation</h1>
+          <p>Please fill in this form to reserve the table</p>
+          <ul>
+
+              <li>
+                  <label for="firstname"><b>Name:</b></label>
+                  <input type="text" placeholder="first name" name="firstname" id="firstname" required>
+                  <input type="text" placeholder="last name" name="secondname" id="secondname" required>
+              </li>
+
+              <li>
+                  <label for="email"><b>Email:</b></label>
+                  <input type="email" placeholder="Gsksince1975@gmail.com" name="email" id="email" required>
+              </li>
+
+              <li>
+                  <label for="phone"><b>Phone:</b></label>
+                  <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="6309549305" required>
+              </li>
+
+              <li>
+                  <label for="nofguests"><b>Of Guests:</b></label>
+                  <input type="number" name="nofguests" id="nofguests" min="1" max="15" required>
+              </li>
+
+              <li>
+                  <lable for="rdate"><b>Reservation Date:</b></lable>
+                  <input type="date" id="rdate" name="rdate" min="2021-05-01" max="2021-05-30" required><br>
+                  <lable for="rtime"><b>Resevation Time:</b></lable>
+                  <input type="time" id="rtime" name="rtime" min="11:00" max="1:00" required>
+              </li>
+
+              <li>
+                  <lable for="rtype"><b>Reservation Type:</b></lable>
+                  <select name="rtype" id="rtype" required>
+                       <option value=""> Please Select </option>
+                       <option value="Dinner"> Dinner </option>
+                       <option value="VIP/Mezzanine"> VIP/Mezzanine </option>
+                       <option value="Birthday/ Anniversary"> Birthday/ Anniversary </option>
+                       <option value="Nightlife"> Nightlife </option>
+                       <option value="Private"> Private </option>
+                       <option value="Wedding"> Wedding </option>
+                       <option value="Corporate"> Corporate </option>
+                       <option value="Holiday"> Holiday </option>
+                       <option value="Other"> Other </option>
+                  </select>
+              </li>
+              <li>
+                  <lable for=""><b>if other than above, please specify</b></lable>
+                  <textarea  id="mentions" name="mentions" rows="4" cols="50"></textarea>
+              </li>
+              <li>
+                  <button type="submit" class="pop">Reserve your table</button>
+              </li>
+          </ul>
+          <p>Thanks for visiting Gsk restaurant.</p>
+     </div>
+
+    </form>
+
+</section>
+
+<!-- resrvation section ends -->
+
+<!--  catering section starts -->
+
+<section class="booking" id="booking">
+    <form action="buffet" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h1>Buffet booking</h1>
+            <p>Please fill these details for booking</p>
+            <ul>
+                <li>
+                    <label for="date"><b>Date of event:</b></label>
+                    <input type="date" id="date" name="date" min="2021-05-01" max="2021-05-30" required>
+                </li>
+                <li>
+                    <label for="time"><b>Time of Delievery:</b></label>
+                    <input type="time" id="time" name="time" min="7:30" max="23:30" required>
+                </li>
+                <li>
+                    <label for="quantity"><b>Party Size: (between 1 and 60):</b></label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="60" required>
+                </li>
+                <li>
+                    <label for="fname"><b>Name:</b></label>
+                    <input type="text" placeholder="first name" id="fname" name="fname" required>
+                    <input type="text" placeholder="last name" id="lname" name="lname" required>
+                </li>
+                <li>
+                    <label for="email1"><b>Enter your email:</b></label>
+                    <input type="email" id="email1" name="email" placeholder="Gsksince1975@gmail.com">
+                </li>
+                <li>
+                    <label for="phone1"><b>Enter a phone number:</b></label><br>
+                    <input type="tel" id="phone1" name="phone" placeholder="6309549305" pattern="[0-9]{10}" required>
+                </li>
+                <li>
+                    <label><b>Place of food delivery:</b></label><br>
+                    <input type="radio" id="inside" name="location" value="inside" required>
+                    <label for="inside"><b>Inside</b></label><br>
+                    <input type="radio" id="outside" name="location" value="outside" required>
+                    <label for="outside"><b>Outside</b></label><br>
+                    <input type="radio" id="t1" name="location" value="Location will be spciefied on spot" required>
+                    <label for="t1"><b>Location will be spciefied on spot</b></label>
+                </li>
+                <li>
+                    <label for="message"><b>Address:</b></label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                </li>
+                <li>
+                    <button type="submit">Book buffet slot</button>
+                </li>
+            </ul>
+            <p>Thanks for having trust and enjoying our food.</p>
+        </div>
+
+    </form>
+</section>
+
+<!--  catering section ends -->
+
+<!-- order section starts -->
+
+<section class="order" id ="order">
+    {% for items1 in items %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="top" style="background: url('{{items1.img.url}}') no-repeat center center; background-size:100% 100%;"></div>
+            <div class="bottom">
+                <div class="left">
+                    <div class="details">
+                        <h1>{{items1.itemname}}</h1>
+                        <p><b>₹</b>{{items1.price}}</p>
+                    </div>
+
+                    <div class="buy"><i class="material-icons">add_shopping_cart</i></div>
+
+                </div>
+                <div class="right">
+                    <div class="done"><i class="material-icons">done</i></div>
+                    <div class="details">
+                        <h1>{{items1.itemname}}</h1>
+                        <p>Added</p>
+                    </div>
+                    <div class="remove"><i class="material-icons">clear</i></div>
+                </div>
+            </div>
+        </div>
+        <div class="inside">
+            <div class="icon"><i class="material-icons">info</i></div>
+            <div class="contents">
+                <h1>{{items1.description}}</h1>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</section>
+
+<!-- order section end -->
+
+<!-- footer starts -->
+
+<footer id="contact">
+    <div class="container">
+        <div class="box">
+            <h3>About us</h3>
+            <p>It was popularised in the 1975.Our restaurant was ranked 13th among best companies to work for in India across all categories by Economic Times “Great Places to Work” survey for 2019 conducted by Great Places to Work Institute. Our Company was also voted among the top ten employers within the Indian retail industry for 2019 by Great Places to Work and 14th among best large workplaces in Asia by Great Places to Work Institute.</p>
+            <a href="#about"><button class="btn btn-secondary">Read More</button></a>
+        </div>
+        <div class="box">
+            <h3>Quik Links</h3>
+            <ul>
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#about">About us</a>
+                </li>
+                <li>
+                    <a href="#menu">Menu</a>
+                </li>
+                <li>
+                    <a href="#reservation">Reservation</a>
+                </li>
+                <li>
+                    <a href="#booking">Buffet Booking</a>
+                </li>
+                <li>
+                    <a href="#order">order</a>
+                </li>
+                <li>
+                    <a href="#">Contact us</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Follow Us</h3>
+            <div>
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/Gudipudi.Shanthankumar/" target="_blank">
+                            <img src="{% static '/mainpage/icons/facebook.svg' %}" alt="">
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/GShanthankumar1" target="_blank">
+                            <img src="{% static '/mainpage/icons/twitter.svg' %}" alt="">
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="{% static '/mainpage/icons/google.svg' %}" alt="">
+                            <span>Google +</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/shanthan_gudipudi_/" target="_blank">
+                            <img src="{% static '/mainpage/icons/instagram.svg' %}" alt="">
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="box instagram-api">
+            <h3>Instagram</h3>
+            <div class="post-wrap">
+                <div>
+                    <img src="{% static '/mainpage/instaimages/insta1.jpeg' %}" alt="">
+                </div>
+                <div>
+                    <img src="{% static '/mainpage/instaimages/insta2.jpeg' %}" alt="">
+                </div>
+                <div>
+                    <img src="{% static '/mainpage/instaimages/insta5.jpeg' %}" alt="">
+                </div>
+                <div>
+                    <img src="{% static '/mainpage/instaimages/insta6.jpeg' %}" alt="">
+                </div>
+                <div>
+                    <img src="{% static '/mainpage/instaimages/insta3.jpeg' %}" alt="">
+                </div>
+                <div>
+                    <img src="{% static '/mainpage/instaimages/insta4.jpeg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<footer class="copyright">
+    <div>
+        Copyright © 2020 .All rights reserved by <a href="https://www.instagram.com/shanthan_gudipudi_/" target="_blank">shanthan</a>.
+    </div>
+</footer>
+
+<!-- footer ends -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+<script>
+    AOS.init({
+        delay:400,
+        duration:500
+    })
+</script>
+
+
+</body>
+
+</html>
